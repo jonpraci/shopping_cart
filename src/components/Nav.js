@@ -14,7 +14,16 @@ export const Nav = ({ toggeldark }) => {
           Home
         </NavLink>
         <NavLink
-          onClick={() => window.scroll(0, 0)}
+          onClick={() => {
+            if (JSON.parse(window.localStorage.getItem("cardarray") === "")) {
+              alert(
+                "You must add at least one item before going to Saved page!"
+              );
+              window.location.pathname = "";
+            }
+
+            window.scroll(0, 0);
+          }}
           to="/card/saved"
           activeClassName="activeLink"
         >
